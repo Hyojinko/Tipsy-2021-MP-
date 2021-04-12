@@ -3,13 +3,20 @@ package com.example.tipsy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+
 public class MainActivity extends AppCompatActivity {
+
+   public permissionr permissions;
+
 
     ImageButton logo;
     ImageButton logomenu;
@@ -18,14 +25,13 @@ public class MainActivity extends AppCompatActivity {
     ImageButton Leftbtn;
     ImageButton homebtn;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         logo=findViewById(R.id.TipsyLogo);
         logomenu=findViewById(R.id.TipsyLogoMenu);
-      rightbtn=findViewById(R.id.BtnRight);
-      Leftbtn=findViewById(R.id.BtnLeft);
-      homebtn=findViewById(R.id.BtnHome);
+        rightbtn=findViewById(R.id.BtnRight);
+        Leftbtn=findViewById(R.id.BtnLeft);
+        homebtn=findViewById(R.id.BtnHome);
 
         setContentView(R.layout.activity_main);
         getSupportActionBar().setIcon(R.drawable.homebtn);
@@ -52,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentf);
                 break;
             case R.id.menu_friend:
-                Toast.makeText(this, "설정 메뉴가 선택 됨 / 향후 구현예정", Toast.LENGTH_LONG).show();
+                Intent intentl = new Intent(getApplicationContext(),Login.class);
+                startActivity(intentl);
                 break;
         }
         return super.onOptionsItemSelected(item);
