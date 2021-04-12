@@ -15,7 +15,7 @@ public class MapFrame extends AppCompatActivity implements OnMapReadyCallback {
         setContentView(R.layout.activity_main);
 
         mapView = findViewById(R.id.map_view);
-        mapView.onCreate(savedInstanceState);
+        mapView.onCreate(saved InstanceState);
 
         naverMapBasicSettings();
     }
@@ -27,17 +27,13 @@ public class MapFrame extends AppCompatActivity implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull final NaverMap naverMap) {
 
-
-
-        // 현재 위치 버튼 안보이게 설정
-        UiSettings uiSettings = naverMap.getUiSettings();
-
-        uiSettings.setLocationButtonEnabled(false);
-
-
-
         // 지도 유형 위성사진으로 설정
-        naverMap.setMapType(NaverMap.MapType.Satellite);
+        naverMap.setMapType(NaverMap.MapType.Basic);
 
     }
 }
+
+
+
+
+      
