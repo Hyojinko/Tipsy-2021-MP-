@@ -61,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentl = new Intent(getApplicationContext(),Login.class);
                 startActivity(intentl);
                 break;
+
+            case R.id.opus_test:
+                Toast.makeText(this, "OPUS! PLEASE!. ", Toast.LENGTH_LONG).show();
+
+                Intent intento = new Intent(getApplicationContext(),opussample.class);
+                startActivity(intento);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

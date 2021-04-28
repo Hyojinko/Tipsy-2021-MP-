@@ -24,6 +24,7 @@ public class permissionr {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
+
     }   ; // 현재 요청 권한 :파일 쓰기, 읽기, 오디오, 위치
     private List permissionList;
     private String permitStr;
