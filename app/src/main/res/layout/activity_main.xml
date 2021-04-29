@@ -84,7 +84,7 @@
             android:id="@+id/Room_Rangking"
             android:orientation="horizontal">
             <fragment
-                android:id="@+id/MakingRoom"
+                android:id="@+id/makingroom"
                 android:layout_width="210dp"
                 android:layout_height="270dp"
                 android:text="Making room"
@@ -94,7 +94,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <fragment
-                android:id="@+id/Rangking"
+                android:id="@+id/rangking"
                 android:layout_width="210dp"
                 android:layout_height="270dp"
                 android:text="Rangking!"

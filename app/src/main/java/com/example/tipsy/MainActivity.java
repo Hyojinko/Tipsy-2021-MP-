@@ -17,24 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
    public permissionr permissions;
 
-
-    ImageButton logo;
-    ImageButton logomenu;
-    ImageButton front;
-    ImageButton rightbtn;
-    ImageButton Leftbtn;
-    ImageButton homebtn;
-
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        logo=findViewById(R.id.TipsyLogo);
-        logomenu=findViewById(R.id.TipsyLogoMenu);
-        rightbtn=findViewById(R.id.BtnRight);
-        Leftbtn=findViewById(R.id.BtnLeft);
-        homebtn=findViewById(R.id.BtnHome);
 
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setIcon(R.drawable.homebtn);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
