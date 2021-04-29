@@ -7,154 +7,121 @@
     tools:context=".account">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
+
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Theme.Tipsy.AppBarOverlay">
 
-                <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-                   android:layout_width="match_parent"
-                  android:layout_height="?attr/actionBarSize"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
-               app:popupTheme="@style/Theme.Tipsy.PopupOverlay" >
+                app:popupTheme="@style/Theme.Tipsy.PopupOverlay">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hello, Account !"
                         android:layout_weight="3"
-                        ></TextView>
+                        android:text="Hello, Account !"></TextView>
+
                     <Button
+                        android:id="@+id/acbackbutton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Back"
-                        android:id="@+id/acbackbutton"
-                        >
+                        android:text="Back">
 
                     </Button>
                 </LinearLayout>
-                </androidx.appcompat.widget.Toolbar>
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
 
- <LinearLayout
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:id="@+id/accountinform"
-     android:orientation="vertical"
-     android:layout_weight="1"
-     >
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_weight="1"
-         android:id="@+id/accinform1"
-         android:orientation="vertical"
-         >
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="회원정보 / 정보 수정"
-    ></TextView>
-         <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="Account informs..."
-         >
+        <LinearLayout
+            android:id="@+id/accountinform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-     </TextView>
-         <Button
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="회원 정보 수정"
-             ></Button>
-     </LinearLayout>
-     <LinearLayout
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:id="@+id/accmenus"
-         android:orientation="vertical"
-         android:layout_weight="1"
-         >
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="menus here"
-             >
-         </TextView>
-         <Button
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Temporary button 1"
-             android:layout_weight="1"
-             ></Button>
-         <Button
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Temporary button 2"
-             android:layout_weight="1"
-             ></Button>
-         <Button
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Temporary button 3"
-             android:layout_weight="1"
-             ></Button>
+        </LinearLayout>
 
-         <Button
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Temporary button 4">
-             android:layout_weight="1"</Button>
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.Tipsy.AppBarOverlay">
 
-         <Button
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:text="Temporary button 5"
-             android:layout_weight="1"
-             ></Button>
-     </LinearLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/bottombar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.Tipsy.PopupOverlay">
 
-     <com.google.android.material.floatingactionbutton.FloatingActionButton
-         android:id="@+id/temporary"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_gravity="bottom|end"
-         android:layout_margin="@dimen/fab_margin"
-         app:srcCompat="@android:drawable/ic_dialog_email" />
-         <com.google.android.material.appbar.AppBarLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:theme="@style/Theme.Tipsy.AppBarOverlay">
+                <LinearLayout
+                    android:id="@+id/Bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:orientation="horizontal"
-                     >
-                     <Button
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:text="logout"
-                         android:id="@+id/aclogout"
-                            android:layout_weight="1"
-                         >
+                    <Button
+                        android:id="@+id/back"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="Back" />
 
-                     </Button>
-                 </LinearLayout>
-         </com.google.android.material.appbar.AppBarLayout>
+                    <Button
+                        android:id="@+id/Home"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="Home" />
 
-     </LinearLayout>
+                    <Button
+                        android:id="@+id/Forward"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="Forward" />
 
 
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/accinform1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원정보 / 정보 수정"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Account informs..."></TextView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원 정보 수정"></Button>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
