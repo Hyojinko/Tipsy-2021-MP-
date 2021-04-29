@@ -46,17 +46,36 @@ public class opussample extends AppCompatActivity {
     }
     private List<String> initData(){
         lstFiles = new ArrayList<String>();
-        String SDPATH = Environment.getExternalStorageDirectory().getPath();
+        String SDPATH = Environment.getExternalStorageDirectory().getPath().toString();
         path = SDPATH + "/OpusPlayer/";
         File fp = new File(path);
+        Log.v("Files",fp.exists()+"");
+        Log.v("Files",fp.isDirectory()+"");
+        Log.v("Files",fp.listFiles()+"");
         if(!fp.exists())
             fp.mkdir();
+        Log.v("Files",fp.exists()+"after");
+        Log.v("Files",fp.isDirectory()+"");
+        Log.v("Files",fp.listFiles()+"");
 
+        Log.v("Files",Environment.getExternalStorageDirectory().getPath()+"");
+        Log.v("Files",fp.getName()+" !");
+        Log.v("Files",Environment.getExternalStorageDirectory().getPath()+"");
+        Log.v("Files",Environment.getExternalStorageDirectory()+"");
         File[] files = fp.listFiles();
+
+        Log.v("Files",fp.exists()+"after3");
+        Log.v("Files",fp.isDirectory()+"");
+        Log.v("Files",fp.listFiles()+"");
+
+        Log.v("Files",Environment.getExternalStorageDirectory().getPath()+"");
+        Log.v("Files",fp.getName()+" !");
+        Log.v("Files",Environment.getExternalStorageDirectory().getPath()+"");
+        Log.v("Files",Environment.getExternalStorageDirectory()+"");
         for (File f : files) {
             lstFiles.add(f.getName());
         }
-        
+
         return lstFiles;
     }
 

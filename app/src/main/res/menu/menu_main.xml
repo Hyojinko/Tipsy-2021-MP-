@@ -13,4 +13,8 @@
     <item android:id="@+id/opus_test"
         android:title="to opus!"
         app:showAsAction="withText"/>
+
+    <item android:id="@+id/temp_map"
+        android:title="지도 프로토타입!"
+        app:showAsAction="withText"/>
 </menu>

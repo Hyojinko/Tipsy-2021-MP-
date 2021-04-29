@@ -63,10 +63,17 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.opus_test:
-                Toast.makeText(this, "OPUS! PLEASE!. ", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "OPUS module On ", Toast.LENGTH_LONG).show();
 
                 Intent intento = new Intent(getApplicationContext(),opussample.class);
                 startActivity(intento);
+                break;
+
+            case R.id.temp_map:
+                Toast.makeText(this, "Map on", Toast.LENGTH_LONG).show();
+
+                Intent intentm = new Intent(getApplicationContext(),tempmap.class);
+                startActivity(intentm);
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:requestLegacyExternalStorage="true"
 
@@ -29,6 +30,10 @@
             >
 
            </activity>
+        <activity android:name=".tempmap"
+            >
+
+        </activity>
         <activity
             android:name=".account"
             android:label="@string/title_activity_account"
