@@ -15,10 +15,17 @@ import androidx.annotation.NonNull;
 
 public class MainActivity extends AppCompatActivity {
 
+    event_1 event1;
+    ranking ranking;
+    makingroom makingroom;
+
    public permissionr permissions;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        event1= new event_1();
+        ranking = new ranking();
+        makingroom = new makingroom();
 
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayUseLogoEnabled(true);

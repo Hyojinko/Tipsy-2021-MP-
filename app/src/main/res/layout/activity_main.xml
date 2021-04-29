@@ -72,6 +72,7 @@
                 android:id="@+id/event_1"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:name="com.example.tipsy.event_1"
                 android:text="Event page!"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -85,6 +86,7 @@
             android:orientation="horizontal">
             <fragment
                 android:id="@+id/makingroom"
+                android:name="com.example.tipsy.makingroom"
                 android:layout_width="210dp"
                 android:layout_height="270dp"
                 android:text="Making room"
@@ -94,7 +96,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <fragment
-                android:id="@+id/rangking"
+                android:id="@+id/ranking"
+                android:name="com.example.tipsy.ranking"
                 android:layout_width="210dp"
                 android:layout_height="270dp"
                 android:text="Rangking!"
