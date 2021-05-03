@@ -22,6 +22,7 @@
             android:theme="@style/Theme.Tipsy.NoActionBar" >
 
         </activity>
+        <activity android:name =".event_1"/>
         <activity android:name=".Login">
 
 
