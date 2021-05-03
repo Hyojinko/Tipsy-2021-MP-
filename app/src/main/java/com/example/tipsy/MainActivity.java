@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,19 +19,20 @@ import androidx.annotation.NonNull;
 public class MainActivity extends AppCompatActivity {
 
     event_1 event1;
-    ranking ranking;
     makingroom makingroom;
-
+    private ListViewAdapter adapter;
+    private ListView listview;
    public permissionr permissions;
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         event1= new event_1();
-        ranking = new ranking();
         makingroom = new makingroom();
         ImageButton eventbutton = findViewById(R.id.eventbutton);
         Button roombutton = findViewById(R.id.roombutton);
+        Button communitybutton = findViewById(R.id.communitybutton);
         eventbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -42,6 +44,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), makingroom.class);
+                startActivity(intent);
+            }
+        });
+        communitybutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), ListViewAdapter.class);
                 startActivity(intent);
             }
         });
