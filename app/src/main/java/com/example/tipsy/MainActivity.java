@@ -7,6 +7,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -23,11 +25,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         event1= new event_1();
         ranking = new ranking();
         makingroom = new makingroom();
+        ImageButton eventbutton = findViewById(R.id.eventbutton);
+        Button roombutton = findViewById(R.id.roombutton);
+        eventbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), event_1.class);
+                startActivity(intent);
+            }
+        });
+        roombutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), makingroom.class);
+                startActivity(intent);
+            }
+        });
 
-        setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
