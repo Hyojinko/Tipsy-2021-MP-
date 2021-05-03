@@ -68,35 +68,26 @@
             android:id="@+id/Event"
             android:orientation="horizontal">
 
-            <fragment
-                android:id="@+id/event_1"
+            <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:name="com.example.tipsy.event_1"
-                android:text="Event page!"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </LinearLayout>
+                android:id="@+id/eventbutton"
+                android:src="@drawable/eventbutton"/>
+
+                </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Room_Rangking"
             android:orientation="horizontal">
-            <fragment
-                android:id="@+id/makingroom"
-                android:name="com.example.tipsy.makingroom"
+            <Button
                 android:layout_width="210dp"
                 android:layout_height="270dp"
-                android:text="Making room"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/roombutton"
+                android:text="방 만들기"/>
 
             <fragment
-                android:id="@+id/ranking"
+                android:id="@+id/rangking"
                 android:name="com.example.tipsy.ranking"
                 android:layout_width="210dp"
                 android:layout_height="270dp"
