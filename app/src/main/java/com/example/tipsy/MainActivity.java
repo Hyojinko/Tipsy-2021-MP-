@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     event_1 event1;
     makingroom makingroom;
-    private ListViewAdapter adapter;
+    private community community;
     private ListView listview;
    public permissionr permissions;
 
@@ -30,27 +30,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         event1= new event_1();
         makingroom = new makingroom();
-        ImageButton eventbutton = findViewById(R.id.eventbutton);
-        Button roombutton = findViewById(R.id.roombutton);
-        Button communitybutton = findViewById(R.id.communitybutton);
-        eventbutton.setOnClickListener(new View.OnClickListener(){
+        ImageButton eventButton = findViewById(R.id.eventbutton);
+        Button roomButton = findViewById(R.id.roombutton);
+        Button communityButton = findViewById(R.id.communitybutton);
+        eventButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), event_1.class);
                 startActivity(intent);
             }
         });
-        roombutton.setOnClickListener(new View.OnClickListener(){
+        roomButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), makingroom.class);
                 startActivity(intent);
             }
         });
-        communitybutton.setOnClickListener(new View.OnClickListener(){
+        communityButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), ListViewAdapter.class);
+                Intent intent = new Intent(getApplicationContext(), community.class);
                 startActivity(intent);
             }
         });
