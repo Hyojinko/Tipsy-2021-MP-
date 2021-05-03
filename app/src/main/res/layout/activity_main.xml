@@ -85,17 +85,13 @@
                 android:layout_height="270dp"
                 android:id="@+id/roombutton"
                 android:text="방 만들기"/>
-
-            <fragment
-                android:id="@+id/rangking"
-                android:name="com.example.tipsy.ranking"
+            <Button
                 android:layout_width="210dp"
                 android:layout_height="270dp"
-                android:text="Rangking!"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/communitybutton"
+                android:text="게시판"/>
+
+
         </LinearLayout>
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
