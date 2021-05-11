@@ -85,14 +85,14 @@ public class MainActivity extends AppCompatActivity {
             case R.id.opus_test:
                 Toast.makeText(this, "OPUS module On ", Toast.LENGTH_LONG).show();
 
-                Intent intento = new Intent(getApplicationContext(),opussample.class);
+                Intent intento = new Intent(getApplicationContext(),tempmap.class);
                 startActivity(intento);
                 break;
 
             case R.id.temp_map:
                 Toast.makeText(this, "Map on", Toast.LENGTH_LONG).show();
 
-                Intent intentm = new Intent(getApplicationContext(),tempmap.class);
+                Intent intentm = new Intent(getApplicationContext(),MapApi.class);
                 startActivity(intentm);
                 break;
         }

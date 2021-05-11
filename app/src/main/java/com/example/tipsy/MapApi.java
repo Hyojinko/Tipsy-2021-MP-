@@ -18,7 +18,7 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mapfragment);
+        setContentView(R.layout.tempmap);
         mapView = findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
