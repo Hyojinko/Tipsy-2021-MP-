@@ -1,2 +1,4 @@
 include ':app'
+include ':tedclustering'
+include ':tedclustering-naver'
 rootProject.name = "Tipsy"

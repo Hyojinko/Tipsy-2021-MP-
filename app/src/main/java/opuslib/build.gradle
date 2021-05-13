@@ -7,7 +7,7 @@ apply plugin: 'com.jfrog.bintray'
 
 version = "1.0.2"
 android {
-    compileSdkVersion 22
+    compileSdkVersion 30
     buildToolsVersion "22.0.1"
     resourcePrefix "ly__"
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.tipsy">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tipsy">
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -8,41 +10,33 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <application
-        android:requestLegacyExternalStorage="true"
 
+    <application
         android:allowBackup="true"
         android:icon="@drawable/homebtn"
         android:label="Tipsy here!"
         android:logo="@drawable/rbtn"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.Tipsy">
+        <activity
+            android:name=".MainActivity2"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.Tipsy.NoActionBar"></activity>
 
-        <uses-library android:required="true" android:name="com.google.android.maps"/>
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="true" />
 
-
-
-
-        <activity android:name=".friendset"
+        <activity
+            android:name=".friendset"
             android:label="@string/title_activity_friendset"
-            android:theme="@style/Theme.Tipsy.NoActionBar" >
-
-        </activity>
-        <activity android:name =".event_1"/>
-        <activity android:name=".Login">
-
-
-        </activity>
-        <activity android:name=".opussample"
-            >
-
-           </activity>
-        <activity android:name=".tempmap"
-            >
-
-        </activity>
+            android:theme="@style/Theme.Tipsy.NoActionBar"></activity>
+        <activity android:name=".event_1" />
+        <activity android:name=".Login"></activity>
+        <activity android:name=".opussample"></activity>
+        <activity android:name=".tempmap"></activity>
         <activity
             android:name=".account"
             android:label="@string/title_activity_account"
@@ -54,12 +48,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="3lkixv3giy"/>
-        <activity android:name=".MapApi">
+            android:value="3lkixv3giy" />
 
-
-        </activity>
+        <activity android:name=".MapApi"></activity>
     </application>
+
 </manifest>

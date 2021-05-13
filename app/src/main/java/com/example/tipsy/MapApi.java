@@ -2,12 +2,22 @@ package com.example.tipsy;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.naver.maps.geometry.LatLngBounds;
+import com.naver.maps.map.CameraPosition;
+import com.naver.maps.map.CameraUpdate;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import ted.gun0912.clustering.naver.TedNaverClustering;
+import ted.gun0912.clustering.naver.demo.NaverItem;
 
 public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
     private MapView mapView;
@@ -45,6 +55,29 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
         uiSettings.setZoomControlEnabled(true);//줌
         uiSettings.setLocationButtonEnabled(true);//내가 있는 곳
 
+        naverMap.moveCamera(
+                CameraUpdate.toCameraPosition(
+                        new CameraPosition(NaverMap.DEFAULT_CAMERA_POSITION.target, NaverMap.DEFAULT_CAMERA_POSITION.zoom))
+        );
+
+        TedNaverClustering.with(this, naverMap)
+                .items(getItems())
+                .make();
+
     }
 
+
+
+    private List<NaverItem> getItems() {
+        LatLngBounds bounds = naverMap.getContentBounds();
+        ArrayList<NaverItem> items = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            NaverItem temp = new NaverItem((bounds.getNorthLatitude() - bounds.getSouthLatitude()) * Math.random() + bounds.getSouthLatitude(),
+                    (bounds.getEastLongitude() - bounds.getWestLongitude()) * Math.random() + bounds.getWestLongitude()
+            );
+            items.add(temp);
+        }
+        return items;
+
+    }
 }
