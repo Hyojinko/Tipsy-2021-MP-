@@ -23,6 +23,7 @@ import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.overlay.InfoWindow;
 import com.naver.maps.map.overlay.Overlay;
+import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.overlay.Marker;
 
@@ -33,7 +34,7 @@ import java.util.List;
 import java.util.Vector;
 
 
-public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
+public class MapApi extends AppCompatActivity implements OnMapReadyCallback,Overlay.OnClickListener{
     private MapView mapView;
     private static final int LOCATION_PERMISSION_REQUEST_CODE=1000;
     private FusedLocationSource locationSource;
@@ -83,6 +84,12 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
             }
         }
         Marker marker = new Marker();
+        marker.setPosition(new LatLng(37.5670135, 126.9783740));
+        marker.setMap(naverMap);
+
+        marker.setWidth(100);
+        marker.setHeight(100);
+        marker.setOnClickListener(this);
         naverMap.addOnCameraChangeListener(new NaverMap.OnCameraChangeListener(){
             @Override
             public void onCameraChange(int reason, boolean animated){
@@ -91,6 +98,7 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
                 for(LatLng markerPosition: markersPosition){
                     if(!withinSightMarker(currentPosition, markerPosition))
                         continue;
+                    Marker marker = new Marker();
                     marker.setPosition(markerPosition);
                     marker.setMap(naverMap);
                     activeMarkers.add(marker);
@@ -173,4 +181,21 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
         }
         activeMarkers=new Vector<Marker>();
     }
+    @Override
+    public boolean onClick(@NonNull Overlay overlay) {
+        if (overlay instanceof Marker) {
+            Marker marker = (Marker) overlay;
+            if (marker.getInfoWindow() != null) {
+                mInfoWindow.close();
+                Toast.makeText(this.getApplicationContext(), "InfoWindow Close.", Toast.LENGTH_LONG).show();
+            }
+            else {
+                mInfoWindow.open(marker);
+                Toast.makeText(this.getApplicationContext(), "InfoWindow Open.", Toast.LENGTH_LONG).show();
+            }
+            return true;
+        }
+        return false;
+    }
+
 }
