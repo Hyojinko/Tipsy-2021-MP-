@@ -107,20 +107,29 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
                 }catch(IOException e){
                     e.printStackTrace();
                 }
-                System.out.println(addressList.get(0).toString());
-                String[] splitStr = addressList.get(0).toString().split(",");
-                String address = splitStr[0].substring(splitStr[0].indexOf("\\")+1,splitStr[0].length()-2);
-                System.out.println(address);
-                String latitude = splitStr[10].substring(splitStr[10].indexOf("=")+1);
-                String longitude = splitStr[12].substring(splitStr[12].indexOf("=")+1);
-                System.out.println(latitude);
-                System.out.println(longitude);
-                LatLng point = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
-                Marker marker = new Marker();
-                marker.setPosition(point);
-                marker.setMap(naverMap);
-                CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
-                naverMap.moveCamera(cameraUpdate);
+                try {
+
+                    System.out.println(addressList.get(0).toString());
+                    String[] splitStr = addressList.get(0).toString().split(",");
+                    String address = splitStr[0].substring(splitStr[0].indexOf("\\")+1,splitStr[0].length()-2);
+                    System.out.println(address);
+                    String latitude = splitStr[10].substring(splitStr[10].indexOf("=")+1);
+                    String longitude = splitStr[12].substring(splitStr[12].indexOf("=")+1);
+                    System.out.println(latitude);
+                    System.out.println(longitude);
+                    LatLng point = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+                    Marker marker = new Marker();
+                    marker.setPosition(point);
+                    marker.setMap(naverMap);
+                    CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
+                    naverMap.moveCamera(cameraUpdate);
+                } catch (IndexOutOfBoundsException e)
+                {
+
+                } catch (NumberFormatException e)
+                {
+
+                }
             }
         });
         mInfoWindow = new InfoWindow();
