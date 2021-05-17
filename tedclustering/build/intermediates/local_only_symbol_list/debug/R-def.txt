@@ -1,0 +1,10 @@
+R_DEF: Internal format may change without notice
+local
+drawable amu_bubble_mask
+drawable amu_bubble_shadow
+id amu_text
+layout amu_text_bubble
+string app_name
+style amu_Bubble.TextAppearance.Dark
+style amu_Bubble.TextAppearance.Light
+style amu_ClusterIcon.TextAppearance

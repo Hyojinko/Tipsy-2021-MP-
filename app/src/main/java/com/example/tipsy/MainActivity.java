@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.opus_test:
                 Toast.makeText(this, "OPUS module On ", Toast.LENGTH_LONG).show();
 
-                Intent intento = new Intent(getApplicationContext(),tempmap.class);
+                Intent intento = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intento);
                 break;
 

@@ -1,0 +1,2 @@
+ted/gun0912/clustering/naver/BuildConfig.java
+ ted.gun0912.clustering.naver.BuildConfig

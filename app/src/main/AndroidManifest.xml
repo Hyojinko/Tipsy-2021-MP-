@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,7 @@
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Tipsy.NoActionBar"></activity>
+            android:theme="@style/Theme.Tipsy.NoActionBar" />
 
         <uses-library
             android:name="com.google.android.maps"
@@ -32,11 +33,11 @@
         <activity
             android:name=".friendset"
             android:label="@string/title_activity_friendset"
-            android:theme="@style/Theme.Tipsy.NoActionBar"></activity>
+            android:theme="@style/Theme.Tipsy.NoActionBar" />
         <activity android:name=".event_1" />
-        <activity android:name=".Login"></activity>
-        <activity android:name=".opussample"></activity>
-        <activity android:name=".tempmap"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".opussample" />
+        <activity android:name=".tempmap" />
         <activity
             android:name=".account"
             android:label="@string/title_activity_account"
@@ -53,7 +54,7 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="3lkixv3giy" />
 
-        <activity android:name=".MapApi"></activity>
+        <activity android:name=".MapApi" />
     </application>
 
 </manifest>
