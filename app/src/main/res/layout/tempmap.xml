@@ -86,7 +86,7 @@
                         android:layout_marginEnd="0dp"
                         android:ems="10"
                         android:inputType="textPersonName"
-                        android:text="search place"
+                        android:hint="search place"
                         />
                     <Button
                         android:layout_width="wrap_content"
