@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.geometry.LatLngBounds;
@@ -18,6 +21,8 @@ import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
+import com.naver.maps.map.overlay.InfoWindow;
+import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.overlay.Marker;
 
@@ -34,6 +39,7 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
     private FusedLocationSource locationSource;
     private NaverMap naverMap;
     private Geocoder geocoder;
+    private InfoWindow mInfoWindow;
     EditText searchPlace;
     Button Button;
     @Override
@@ -60,7 +66,6 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
     }
     @Override
     public void onMapReady(@NonNull NaverMap naverMap){
-
         this.naverMap = naverMap;
         geocoder = new Geocoder(this);
         naverMap.setLocationSource(locationSource);
@@ -77,6 +82,7 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
                 markersPosition.add(new LatLng(initialPosition.latitude-(REFERANCE_LAT*x),initialPosition.longitude-(REFERANCE_LNG*y)));
             }
         }
+        Marker marker = new Marker();
         naverMap.addOnCameraChangeListener(new NaverMap.OnCameraChangeListener(){
             @Override
             public void onCameraChange(int reason, boolean animated){
@@ -85,7 +91,6 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
                 for(LatLng markerPosition: markersPosition){
                     if(!withinSightMarker(currentPosition, markerPosition))
                         continue;
-                    Marker marker = new Marker();
                     marker.setPosition(markerPosition);
                     marker.setMap(naverMap);
                     activeMarkers.add(marker);
@@ -118,8 +123,22 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback{
                 naverMap.moveCamera(cameraUpdate);
             }
         });
-
+        mInfoWindow = new InfoWindow();
+        mInfoWindow.setAdapter(new InfoWindow.DefaultViewAdapter(this){
+            @NonNull
+            @Override
+            protected View getContentView(@NonNull InfoWindow infoWindow){
+                Marker marker = infoWindow.getMarker();
+                PlaceInfo info = (PlaceInfo) marker.getTag();
+                String str = searchPlace.getText().toString();
+                View view = View.inflate(MapApi.this, R.layout.view_info_window, null);
+                ((TextView)view.findViewById(R.id.title)).setText(str);
+                ((TextView)view.findViewById(R.id.details)).setText("Info Window ");
+                return view;
+            }
+        });
     }
+
     private Vector<LatLng> markersPosition;
     private Vector<Marker> activeMarkers;
     public LatLng getCurrentPosition(NaverMap naverMap){
