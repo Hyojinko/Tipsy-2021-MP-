@@ -19,7 +19,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="325dp"
+                android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimary"
                 app:popupTheme="@style/Theme.Tipsy.PopupOverlay">
@@ -34,7 +34,7 @@
 
                     <TextView
                         android:id="@+id/TipsyLogomenu"
-                        android:layout_width="350dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" Tipsy title or tempory text: will be deleted." />
 
@@ -66,11 +66,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Event"
+            android:layout_weight="4"
             android:orientation="horizontal">
 
             <ImageButton
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="match_parent"
                 android:id="@+id/eventbutton"
                 android:src="@drawable/eventbutton"/>
 
@@ -78,18 +79,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Room_Rangking"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="horizontal">
             <Button
-                android:layout_width="210dp"
-                android:layout_height="270dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:id="@+id/roombutton"
                 android:text="익명 채팅방 입장"/>
+
+
+        </LinearLayout>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
             <Button
-                android:layout_width="210dp"
-                android:layout_height="270dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:id="@+id/communitybutton"
                 android:text="익명 한줄 게시판 입장"/>
+
+
+        </LinearLayout>
 
 
         </LinearLayout>
@@ -97,44 +115,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/Theme.Tipsy.AppBarOverlay">
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/bottombar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/Theme.Tipsy.PopupOverlay" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/Bottom"
-                    android:orientation="horizontal"
-                    >
-
-                    <Button
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="Back"
-                        android:id="@+id/back"
-                        />
-                    <Button
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:id="@+id/Home"
-                        />
-                    <Button
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="Forward"
-                        android:id="@+id/Forward"
-                        />
-
-
-
-
-                </LinearLayout>
-            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.AppBarLayout>
     </LinearLayout>
