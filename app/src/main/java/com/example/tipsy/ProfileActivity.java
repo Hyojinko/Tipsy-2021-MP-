@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private TextView textViewUserEmail;
     private Button buttonLogout;
     private TextView textivewDelete;
-
+private Button buttonMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile);
 
         //initializing views
+        buttonMain=findViewById(R.id.btnMain);
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
         buttonLogout = (Button) findViewById(R.id.btnLogout);
         textivewDelete = (TextView) findViewById(R.id.textViewDelete);
@@ -56,12 +57,18 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         //logout button event
         buttonLogout.setOnClickListener(this);
         textivewDelete.setOnClickListener(this);
-
+buttonMain.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
+
+        if(view == buttonMain)
+        {
+
+            startActivity(new Intent(this, MainActivity.class));
+        }
         if (view == buttonLogout) {
             firebaseAuth.signOut();
             finish();
