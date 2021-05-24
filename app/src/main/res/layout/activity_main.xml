@@ -84,12 +84,12 @@
                 android:layout_width="210dp"
                 android:layout_height="270dp"
                 android:id="@+id/roombutton"
-                android:text="방 만들기"/>
+                android:text="익명 채팅방 입장"/>
             <Button
                 android:layout_width="210dp"
                 android:layout_height="270dp"
                 android:id="@+id/communitybutton"
-                android:text="게시판"/>
+                android:text="익명 한줄 게시판 입장"/>
 
 
         </LinearLayout>

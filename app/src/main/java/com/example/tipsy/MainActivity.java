@@ -43,14 +43,16 @@ public class MainActivity extends AppCompatActivity {
         roomButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), makingroom.class);
+                Intent intent = new Intent(getApplicationContext(), StartActivity.class);
                 startActivity(intent);
             }
         });
         communityButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), community.class);
+                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                intent.putExtra("chatName", "익명 채널".toString());
+                intent.putExtra("userName", "".toString());
                 startActivity(intent);
             }
         });
