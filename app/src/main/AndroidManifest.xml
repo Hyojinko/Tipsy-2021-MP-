@@ -26,17 +26,8 @@
             android:name="com.google.android.maps"
             android:required="true" />
 
-        <activity
-            android:name=".friendset"
-            android:label="@string/title_activity_friendset"
-            android:theme="@style/Theme.Tipsy.NoActionBar" />
         <activity android:name=".event_1" />
-        <activity android:name=".Login" />
         <activity android:name=".tempmap" />
-        <activity
-            android:name=".account"
-            android:label="@string/title_activity_account"
-            android:theme="@style/Theme.Tipsy.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

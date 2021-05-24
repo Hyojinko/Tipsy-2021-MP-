@@ -66,20 +66,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int curId = item.getItemId();
         switch(curId){
-            case R.id.menu_toaccount:
-                Toast.makeText(this, "계정 메뉴로 갑니다!", Toast.LENGTH_LONG).show();
-                Intent intenta = new Intent(getApplicationContext(),account.class);
-                startActivity(intenta);
-                break;
-            case R.id.menu_search:
-                Toast.makeText(this, "친구창 메뉴로 갑니다. ", Toast.LENGTH_LONG).show();
-                Intent intentf = new Intent(getApplicationContext(),friendset.class);
-                startActivity(intentf);
-                break;
-            case R.id.menu_friend:
-                Intent intentl = new Intent(getApplicationContext(),Login.class);
-                startActivity(intentl);
-                break;
 
             case R.id.temp_map:
                 Toast.makeText(this, "Map on", Toast.LENGTH_LONG).show();

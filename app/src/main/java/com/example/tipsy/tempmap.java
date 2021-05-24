@@ -46,24 +46,4 @@ public class tempmap extends AppCompatActivity
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int curId = item.getItemId();
-        switch(curId){
-            case R.id.menu_toaccount:
-                Toast.makeText(this, "계정 메뉴로 갑니다.", Toast.LENGTH_LONG).show();
-                Intent intenta = new Intent(getApplicationContext(),account.class);
-                startActivity(intenta);
-                break;
-            case R.id.menu_search:
-                Toast.makeText(this, "친구창 메뉴로 갑니다. ", Toast.LENGTH_LONG).show();
-                Intent intentf = new Intent(getApplicationContext(),friendset.class);
-                startActivity(intentf);
-                break;
-            case R.id.menu_friend:
-                Toast.makeText(this, "설정 메뉴가 선택 됨 / 향후 구현예정", Toast.LENGTH_LONG).show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
