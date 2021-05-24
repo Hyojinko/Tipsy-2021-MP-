@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         int curId = item.getItemId();
         switch(curId){
             case R.id.menu_toaccount:
-                Toast.makeText(this, "계정 메뉴로 갑니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "계정 메뉴로 갑니다!", Toast.LENGTH_LONG).show();
                 Intent intenta = new Intent(getApplicationContext(),account.class);
                 startActivity(intenta);
                 break;
