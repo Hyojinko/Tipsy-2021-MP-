@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         communityButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                Intent intent = new Intent(MainActivity.this, AChatActivity.class);
                 intent.putExtra("chatName", "익명 채널".toString());
                 intent.putExtra("userName", "".toString());
                 startActivity(intent);

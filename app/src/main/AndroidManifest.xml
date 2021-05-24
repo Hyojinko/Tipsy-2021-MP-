@@ -57,6 +57,7 @@
         <activity android:name=".MapApi" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".StartActivity" />
+        <activity android:name=".AChatActivity"/>
     </application>
 
 </manifest>

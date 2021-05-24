@@ -1,5 +1,4 @@
 package com.example.tipsy;
-package com.example.tipsy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ChatActivity extends AppCompatActivity {
+public class AChatActivity extends AppCompatActivity {
 
     private String CHAT_NAME;
     private String USER_NAME;
