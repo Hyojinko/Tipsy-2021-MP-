@@ -19,17 +19,14 @@ import androidx.annotation.NonNull;
 public class MainActivity extends AppCompatActivity {
 
     event_1 event1;
-    makingroom makingroom;
     private community community;
     private ListView listview;
-   public permissionr permissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         event1= new event_1();
-        makingroom = new makingroom();
         ImageButton eventButton = findViewById(R.id.eventbutton);
         Button roomButton = findViewById(R.id.roombutton);
         Button communityButton = findViewById(R.id.communitybutton);

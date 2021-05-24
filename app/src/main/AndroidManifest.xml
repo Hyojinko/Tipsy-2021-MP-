@@ -15,16 +15,12 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/homebtn"
-        android:label="Tipsy here!"
+        android:label="Tipsy"
         android:logo="@drawable/rbtn"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tipsy">
-        <activity
-            android:name=".MainActivity2"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Tipsy.NoActionBar" />
 
         <uses-library
             android:name="com.google.android.maps"
@@ -36,7 +32,6 @@
             android:theme="@style/Theme.Tipsy.NoActionBar" />
         <activity android:name=".event_1" />
         <activity android:name=".Login" />
-        <activity android:name=".opussample" />
         <activity android:name=".tempmap" />
         <activity
             android:name=".account"
