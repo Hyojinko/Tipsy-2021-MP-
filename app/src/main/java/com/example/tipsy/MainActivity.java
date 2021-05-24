@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -72,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intentm = new Intent(getApplicationContext(),MapApi.class);
                 startActivity(intentm);
+                break;
+            case R.id.Logout:
+                Toast.makeText(this, "Map on", Toast.LENGTH_LONG).show();
+
+                Intent intentl = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intentl);
                 break;
         }
         return super.onOptionsItemSelected(item);
