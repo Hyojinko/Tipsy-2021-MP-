@@ -3,9 +3,7 @@ package com.example.tipsy;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,8 +11,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AChatActivity.class);
                 intent.putExtra("chatName", "익명 채널".toString());
                 intent.putExtra("userName", "".toString());
+                startActivity(intent);
+            }
+        });
+        //임시
+        Button btn3=findViewById(R.id.임시버튼);
+        btn3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getApplicationContext(), HomeCommunity.class);
                 startActivity(intent);
             }
         });
