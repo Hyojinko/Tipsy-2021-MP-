@@ -74,37 +74,48 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback,Over
         LatLng initialPosition = new LatLng(37.506855,127.066242);
         CameraUpdate cameraUpdate = CameraUpdate.scrollTo(initialPosition);
         naverMap.moveCamera(cameraUpdate);
-        markersPosition = new Vector<LatLng>();
-        for(int x= 0;x<100;++x){
-            for(int y = 0;y < 100; ++y){
-                markersPosition.add(new LatLng(initialPosition.latitude-(REFERANCE_LAT*x),initialPosition.longitude+(REFERANCE_LNG*y)));
-                markersPosition.add(new LatLng(initialPosition.latitude+(REFERANCE_LAT*x),initialPosition.longitude-(REFERANCE_LNG*y)));
-                markersPosition.add(new LatLng(initialPosition.latitude+(REFERANCE_LAT*x),initialPosition.longitude+(REFERANCE_LNG*y)));
-                markersPosition.add(new LatLng(initialPosition.latitude-(REFERANCE_LAT*x),initialPosition.longitude-(REFERANCE_LNG*y)));
-            }
-        }
-        Marker marker = new Marker();
-        marker.setPosition(new LatLng(37.5670135, 126.9783740));
-        marker.setMap(naverMap);
+        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
 
-        marker.setWidth(100);
-        marker.setHeight(100);
-        marker.setOnClickListener(this);
-        naverMap.addOnCameraChangeListener(new NaverMap.OnCameraChangeListener(){
-            @Override
-            public void onCameraChange(int reason, boolean animated){
-                freeActiveMarkers();
-                LatLng currentPosition = getCurrentPosition(naverMap);
-                for(LatLng markerPosition: markersPosition){
-                    if(!withinSightMarker(currentPosition, markerPosition))
-                        continue;
-                    Marker marker = new Marker();
-                    marker.setPosition(markerPosition);
-                    marker.setMap(naverMap);
-                    activeMarkers.add(marker);
-                }
-            }
-        });
+        Marker marker1 = new Marker();
+        marker1.setPosition(new LatLng(37.45478351626994, 127.12869252935397));
+        marker1.setMap(naverMap);
+
+        Marker marker2 = new Marker();
+        marker2.setPosition(new LatLng( 37.448716926560486, 127.12722228105848));
+        marker2.setMap(naverMap);
+
+        Marker marker3 = new Marker();
+        marker3.setPosition(new LatLng( 37.4488809522522, 127.12711288891323));
+        marker3.setMap(naverMap);
+
+        Marker marker4 = new Marker();
+        marker4.setPosition(new LatLng( 37.447797506247035, 127.1274278177489));
+        marker4.setMap(naverMap);
+
+        Marker marker5 = new Marker();
+        marker5.setPosition(new LatLng( 37.4556908622406, 127.12712493877979));
+        marker5.setMap(naverMap);
+
+        Marker marker6 = new Marker();
+        marker6.setPosition(new LatLng( 37.44582663831137, 127.13260851774889));
+        marker6.setMap(naverMap);
+
+        Marker marker7 = new Marker();
+        marker7.setPosition(new LatLng( 37.45621814211817, 127.12767885333109));
+        marker7.setMap(naverMap);
+
+        Marker marker8 = new Marker();
+        marker8.setPosition(new LatLng( 37.45865728946744, 127.12647338609044));
+        marker8.setMap(naverMap);
+
+        Marker marker9 = new Marker();
+        marker9.setPosition(new LatLng( 37.45824714980705, 127.12652647253495));
+        marker9.setMap(naverMap);
+
+        Marker marker10 = new Marker();
+        marker10.setPosition(new LatLng( 37.45840469202917, 127.12691538924386));
+        marker10.setMap(naverMap);
+
         Button.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -156,31 +167,8 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback,Over
         });
     }
 
-    private Vector<LatLng> markersPosition;
-    private Vector<Marker> activeMarkers;
-    public LatLng getCurrentPosition(NaverMap naverMap){
-        CameraPosition cameraPosition = naverMap.getCameraPosition();
-        return new LatLng(cameraPosition.target.latitude, cameraPosition.target.longitude);
-    }
-    public final static double REFERANCE_LAT = 1/109.9584;
-    public final static double REFERANCE_LNG=1/88.74;
-    public final static double REFERANCE_LAT_X3 = 3/109.958489;
-    public final static double REFERANCE_LNG_X3 = 3/88.74;
-    public boolean withinSightMarker(LatLng currentPosition, LatLng markerPosition){
-        boolean withinSightMarkerLat = Math.abs(currentPosition.latitude-markerPosition.latitude)<=REFERANCE_LAT_X3;
-        boolean withinSightMarkerLng = Math.abs(currentPosition.longitude-markerPosition.longitude) <= REFERANCE_LNG_X3;
-        return withinSightMarkerLat && withinSightMarkerLng;
-    }
-    private void freeActiveMarkers(){
-        if(activeMarkers==null){
-            activeMarkers = new Vector<Marker>();
-            return;
-        }
-        for (Marker activeMarker:activeMarkers){
-            activeMarker.setMap(null);
-        }
-        activeMarkers=new Vector<Marker>();
-    }
+
+
     @Override
     public boolean onClick(@NonNull Overlay overlay) {
         if (overlay instanceof Marker) {
