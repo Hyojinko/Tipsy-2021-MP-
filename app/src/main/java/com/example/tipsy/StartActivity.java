@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity { // Activity For making chatting :
 
     private EditText user_chat, user_edit;
     private Button user_next;
@@ -53,13 +53,13 @@ public class StartActivity extends AppCompatActivity {
     }
 
     private void showChatList() {
-        // 리스트 어댑터 생성 및 세팅
+        // Setting List adapter
         final ArrayAdapter<String> adapter
 
                 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
         chat_list.setAdapter(adapter);
 
-        // 데이터 받아오기 및 어댑터 데이터 추가 및 삭제 등..리스너 관리
+        // Lister management
         databaseReference.child("chat").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {

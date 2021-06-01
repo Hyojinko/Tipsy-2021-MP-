@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,28 +12,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.naver.maps.geometry.LatLng;
-import com.naver.maps.geometry.LatLngBounds;
-import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.CameraUpdate;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
-import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.overlay.InfoWindow;
 import com.naver.maps.map.overlay.Overlay;
-import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.overlay.Marker;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 
-public class MapApi extends AppCompatActivity implements OnMapReadyCallback,Overlay.OnClickListener{
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,Overlay.OnClickListener{
     private MapView mapView;
     private static final int LOCATION_PERMISSION_REQUEST_CODE=1000;
     private FusedLocationSource locationSource;
@@ -46,7 +38,7 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback,Over
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tempmap);
+        setContentView(R.layout.activity_map);
         searchPlace = findViewById(R.id.searchPlace);
         Button = findViewById(R.id.button);
         mapView = findViewById(R.id.map_view);
@@ -159,7 +151,7 @@ public class MapApi extends AppCompatActivity implements OnMapReadyCallback,Over
                 Marker marker = infoWindow.getMarker();
                 PlaceInfo info = (PlaceInfo) marker.getTag();
                 String str = searchPlace.getText().toString();
-                View view = View.inflate(MapApi.this, R.layout.view_info_window, null);
+                View view = View.inflate(MapActivity.this, R.layout.view_info_window, null);
                 ((TextView)view.findViewById(R.id.title)).setText(str);
                 ((TextView)view.findViewById(R.id.details)).setText("Info Window ");
                 return view;

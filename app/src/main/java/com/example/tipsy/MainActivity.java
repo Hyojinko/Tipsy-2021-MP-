@@ -8,50 +8,40 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    event_1 event1;
     private community community;
     private ListView listview;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // onCreate : Do when created.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        event1= new event_1();
-        ImageButton eventButton = findViewById(R.id.eventbutton);
         Button roomButton = findViewById(R.id.roombutton);
         Button communityButton = findViewById(R.id.communitybutton);
-        eventButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(getApplicationContext(), event_1.class);
-                startActivity(intent);
-            }
-        });
-        roomButton.setOnClickListener(new View.OnClickListener(){
+
+        roomButton.setOnClickListener(new View.OnClickListener(){ // sets clicklistener on Room making button.
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), StartActivity.class);
                 startActivity(intent);
             }
         });
-        communityButton.setOnClickListener(new View.OnClickListener(){
+        communityButton.setOnClickListener(new View.OnClickListener(){ // sets clicklistener on annomyous chatting button.
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MainActivity.this, AChatActivity.class);
-                intent.putExtra("chatName", "익명 채널".toString());
-                intent.putExtra("userName", "".toString());
+                intent.putExtra("chatName", "anonymous".toString());
+                intent.putExtra("userName", "익명".toString());
                 startActivity(intent);
             }
         });
-        //임시
-        Button btn3=findViewById(R.id.임시버튼);
+        //community button
+        Button btn3=findViewById(R.id.community);
         btn3.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -73,18 +63,19 @@ public class MainActivity extends AppCompatActivity {
         int curId = item.getItemId();
         switch(curId){
 
-            case R.id.temp_map:
-                Toast.makeText(this, "Map on", Toast.LENGTH_LONG).show();
+            case R.id.map:
+                Toast.makeText(this, "You entered Map activity.", Toast.LENGTH_LONG).show();
 
-                Intent intentm = new Intent(getApplicationContext(),MapApi.class);
+                Intent intentm = new Intent(getApplicationContext(), MapActivity.class);
                 startActivity(intentm);
                 break;
             case R.id.Logout:
-                Toast.makeText(this, "Map on", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "You entered Logout activity.", Toast.LENGTH_LONG).show();
 
                 Intent intentl = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intentl);
                 break;
+
         }
         return super.onOptionsItemSelected(item);
     }

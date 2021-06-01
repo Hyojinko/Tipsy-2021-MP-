@@ -42,7 +42,7 @@ private Button buttonMain;
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
-        //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
+        // if user is not log-in status, than start Login activity.
         if(firebaseAuth.getCurrentUser() == null) {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
@@ -74,10 +74,10 @@ buttonMain.setOnClickListener(this);
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
-        //회원탈퇴를 클릭하면 회원정보를 삭제한다. 삭제전에 컨펌창을 하나 띄워야 겠다.
+        // Make confirm when deleting your ID
         if(view == textivewDelete) {
             AlertDialog.Builder alert_confirm = new AlertDialog.Builder(com.example.tipsy.ProfileActivity.this);
-            alert_confirm.setMessage("정말 계정을 삭제 할까요?").setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            alert_confirm.setMessage("정말 계정을 삭제 하시겠습니까?").setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
