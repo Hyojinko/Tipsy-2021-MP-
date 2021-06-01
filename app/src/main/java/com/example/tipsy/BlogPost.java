@@ -1,23 +1,25 @@
+//커뮤니티 글 class
+
 package com.example.tipsy;
 
-
-
+import com.example.tipsy.BlogPostId;
 import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.Date;
 
-public class BlogPost extends BlogPostId {
+public class BlogPost extends com.example.tipsy.BlogPostId {
 
-    public String user_id, image_url, desc, image_thumb;
+    public String user_id, image_url, desc, image_thumb,image_name;
     public Date timestamp;
 
     public BlogPost() {}
 
-    public BlogPost(String user_id, String image_url, String desc, String image_thumb, Date timestamp) {
+    public BlogPost(String user_id, String image_url, String desc, String image_thumb, String image_name,Date timestamp) {
         this.user_id = user_id;
         this.image_url = image_url;
         this.desc = desc;
         this.image_thumb = image_thumb;
+        this.image_name=image_name;
         this.timestamp = timestamp;
     }
 
@@ -27,6 +29,13 @@ public class BlogPost extends BlogPostId {
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+    public String getImage_name() {
+        return image_name;
+    }
+
+    public void setImage_name(String image_name) {
+        this.image_name = image_name;
     }
 
     public String getImage_url() {

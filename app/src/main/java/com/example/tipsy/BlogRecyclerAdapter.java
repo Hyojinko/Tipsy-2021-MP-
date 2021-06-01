@@ -1,5 +1,6 @@
-package com.example.tipsy;
+//커뮤니티 블로그 recycler 클라스
 
+package com.example.tipsy;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,8 +24,14 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.tipsy.BlogPost;
+import com.example.tipsy.CommentsActivity;
+import com.example.tipsy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -33,6 +40,11 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -65,6 +77,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         context = parent.getContext();
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
+
         return new ViewHolder(view);
     }
 
@@ -79,13 +92,62 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         String desc_data = blog_list.get(position).getDesc();
         holder.setDescText(desc_data);
 
-        String image_url = blog_list.get(position).getImage_url();
-        //Log.i("img_rul_check",image_url);
-        String thumbUri = blog_list.get(position).getImage_thumb();
-        holder.setBlogImage(image_url, thumbUri);
-
         String user_id = blog_list.get(position).getUser_id();
-        //User Data will be retrieved here...
+
+//블로그 포스트 이미지 불러오기
+        StorageReference storageRef2= FirebaseStorage.getInstance().getReferenceFromUrl("gs://tipsy-4b38d.appspot.com").child("post_images");
+        if(storageRef2==null){
+            Toast.makeText(context, "사진이 존재하지 않습니다.",Toast.LENGTH_SHORT).show();
+        }else{
+            StorageReference submitProfile=storageRef2.child(blog_list.get(position).getImage_name()+".jpg");
+            StorageReference submitProfile2=storageRef2.child("thumbs").child(blog_list.get(position).getImage_name()+".jpg");
+            submitProfile.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Uri image_uri=uri;
+                    submitProfile2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Uri thumb_uri=uri;
+                            holder.setBlogImage(image_uri,thumb_uri);
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+        }
+
+//블로그 글을 쓴 사람의 이미지 가져오기
+        StorageReference storageRef= FirebaseStorage.getInstance().getReferenceFromUrl("gs://tipsy-4b38d.appspot.com").child("profile_images");
+        if(storageRef==null){
+            Toast.makeText(context, "사진이 존재하지 않습니다.",Toast.LENGTH_SHORT).show();
+        }else{
+            StorageReference submitProfile=storageRef.child(user_id+".jpg");
+            submitProfile.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Uri userImage=uri;
+                    holder.setUserimage(userImage);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+        }
+//블로그 쓴 사람의 닉네임 가져오기
         firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -93,9 +155,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
                 if(task.isSuccessful()){
 
                     String userName = task.getResult().getString("name");
-                    String userImage = task.getResult().getString("image");
-
-                    holder.setUserData(userName, userImage);
+//                    String userImage = task.getResult().getString("image");
+                    holder.setUsername(userName);
 
 
                 } else {
@@ -107,6 +168,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
+//블로그 글의 작성 시간 가져오기
         try {
             long millisecond = blog_list.get(position).getTimestamp().getTime();
             String dateString = DateFormat.format("MM/dd/yyyy", new Date(millisecond)).toString();
@@ -117,7 +179,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         }
 
-        //Get Likes Count
+//블로그 글의 좋아요 개수 나타내기
         firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").addSnapshotListener( new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -137,8 +199,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
-
-        //Get Likes
+//블로그 글의 좋아요 개수 가져오기
         firebaseFirestore.collection("Posts/" + blogPostId + "/Likes").document(currentUserId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
@@ -157,7 +218,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
-        //Likes Feature
+//블로그 글의 좋아요 클릭시 이벤트 처리
         holder.blogLikeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,6 +245,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
+//블로그 글의 댓글 클릭시 댓글 액티비티로 이동
         holder.blogCommentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,6 +256,8 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
             }
         });
+
+//블로그 글의 댓글 개수 나타내기
         firebaseFirestore.collection("Posts/" + blogPostId + "/Comments").addSnapshotListener( new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
@@ -254,7 +318,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         }
 
-        public void setBlogImage(String downloadUri, String thumbUri){
+        public void setBlogImage(Uri downloadUri, Uri thumbUri){
 
             blogImageView = mView.findViewById(R.id.blog_image);
 
@@ -275,15 +339,21 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
         }
 
-        public void setUserData(String name, String image){
+        public void setUsername(String name){
 
-            blogUserImage = mView.findViewById(R.id.blog_user_image);
             blogUserName = mView.findViewById(R.id.blog_user_name);
 
             blogUserName.setText(name);
 
+
+        }
+        public void setUserimage(Uri image){
+
+            blogUserImage = mView.findViewById(R.id.blog_user_image);
+
             RequestOptions placeholderOption = new RequestOptions();
             placeholderOption.placeholder(R.drawable.profile_placeholder);
+//            Picasso.get().load(image).into(blogUserImage);
 
             Glide.with(context).applyDefaultRequestOptions(placeholderOption).load(image).into(blogUserImage);
 

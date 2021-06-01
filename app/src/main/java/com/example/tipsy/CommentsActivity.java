@@ -1,3 +1,4 @@
+//블로그 글에서 댓글을 눌렀을때 이동하는 액티비티
 package com.example.tipsy;
 
 
@@ -12,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tipsy.Comments;
+import com.example.tipsy.CommentsRecyclerAdapter;
+import com.example.tipsy.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,8 +33,6 @@ import java.util.List;
 import java.util.Map;
 
 public class CommentsActivity extends AppCompatActivity {
-//
-//    private Toolbar commentToolbar;
 
     private EditText comment_field;
     private ImageView comment_post_btn;
@@ -50,10 +52,6 @@ public class CommentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
 
-//        commentToolbar = findViewById(R.id.comment_toolbar);
-//        setSupportActionBar(commentToolbar);
-//        getSupportActionBar().setTitle("Comments");
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
@@ -64,14 +62,13 @@ public class CommentsActivity extends AppCompatActivity {
         comment_post_btn = findViewById(R.id.comment_post_btn);
         comment_list = findViewById(R.id.comment_list);
 
-        //RecyclerView Firebase List
         commentsList = new ArrayList<>();
         commentsRecyclerAdapter = new CommentsRecyclerAdapter(commentsList);
         comment_list.setHasFixedSize(true);
         comment_list.setLayoutManager(new LinearLayoutManager(this));
         comment_list.setAdapter(commentsRecyclerAdapter);
 
-
+//파이어베이스에서 comment 데이터 베이스에 저장하기위한 과정
         firebaseFirestore.collection("Posts/" + blog_post_id + "/Comments")
                 .addSnapshotListener(CommentsActivity.this, new EventListener<QuerySnapshot>() {
                     @Override
@@ -97,6 +94,7 @@ public class CommentsActivity extends AppCompatActivity {
                     }
                 });
 
+//코멘트 작성 버튼을 누르면 댓글 정보가 파이어베이스에 저장(이벤트 처리)
         comment_post_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

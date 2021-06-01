@@ -1,3 +1,4 @@
+//블로그 커뮤니티 홈 액티비티(글 목록)
 package com.example.tipsy;
 
 
@@ -35,14 +36,12 @@ import java.util.List;
 
 public class HomeCommunity extends AppCompatActivity {
 
-//    private Toolbar mainToolbar;
     private FirebaseAuth mAuth;
     private FirebaseFirestore firebaseFirestore;
 
     private String current_user_id;
 
     private FloatingActionButton addPostBtn;
-//    private BottomNavigationView mainbottomNav;
     private RecyclerView blog_list_view;
     private List<BlogPost> blog_list;
 
@@ -50,10 +49,6 @@ public class HomeCommunity extends AppCompatActivity {
 
     private DocumentSnapshot lastVisible;
     private Boolean isFirstPageFirstLoad = true;
-
-//    private HomeFragment homeFragment;
-//    private NotificationFragment notificationFragment;
-//    private AccountFragment accountFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,16 +60,13 @@ public class HomeCommunity extends AppCompatActivity {
         blog_list = new ArrayList<>();
         blog_list_view = findViewById(R.id.recycler_view);
 
+        //recycler를 통해 글목록을 보여줌
         blogRecyclerAdapter = new BlogRecyclerAdapter(blog_list);
         blog_list_view.setLayoutManager(new LinearLayoutManager(this));
         blog_list_view.setAdapter(blogRecyclerAdapter);
         blog_list_view.setHasFixedSize(true);
 
-//        mainToolbar = (Toolbar) findViewById(R.id.main_toolbar);
-//        setSupportActionBar(mainToolbar);
-//
-//        getSupportActionBar().setTitle("Photo Blog");
-
+        //스크롤 사용
         if(mAuth.getCurrentUser() != null) {
             blog_list_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override
@@ -91,6 +83,7 @@ public class HomeCommunity extends AppCompatActivity {
 
                 }
             });
+            //시간 순서 별로 글 가져오기
             Query firstQuery = firebaseFirestore.collection("Posts").orderBy("timestamp", Query.Direction.DESCENDING).limit(3);
             firstQuery.addSnapshotListener(this, new EventListener<QuerySnapshot>() {
                 @Override
@@ -135,49 +128,9 @@ public class HomeCommunity extends AppCompatActivity {
                 }
 
             });
-//            mainbottomNav = findViewById(R.id.mainBottomNav);
-
-            // FRAGMENTS
-//            homeFragment = new HomeFragment();
-//            notificationFragment = new NotificationFragment();
-//            accountFragment = new AccountFragment();
-
-//            initializeFragment();
-
-//            mainbottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//                @Override
-//                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                    Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.main_container);
-//
-//                    switch (item.getItemId()) {
-//
-//                        case R.id.bottom_action_home:
-//
-//                            replaceFragment(homeFragment, currentFragment);
-//                            return true;
-//
-//                        case R.id.bottom_action_account:
-//
-//                            replaceFragment(accountFragment, currentFragment);
-//                            return true;
-//
-//                        case R.id.bottom_action_notif:
-//
-//                            replaceFragment(notificationFragment, currentFragment);
-//                            return true;
-//
-//                        default:
-//                            return false;
-//
-//
-//                    }
-//
-//                }
-//            });
-//
-
+            //글쓰기 버튼
             addPostBtn = findViewById(R.id.add_post_btn);
+            //글쓰기 버튼(+) 클릭시 글쓰기 용 액티비티로 이동
             addPostBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -236,47 +189,6 @@ public class HomeCommunity extends AppCompatActivity {
 
     }
 
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//
-//        getMenuInflater().inflate(R.menu.main_menu, menu);
-//        return true;
-//
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//        switch (item.getItemId()) {
-//
-//            case R.id.action_logout_btn:
-//                logOut();
-//                return true;
-//
-//            case R.id.action_settings_btn:
-//
-//                Intent settingsIntent = new Intent(MainActivity.this, SetupActivity.class);
-//                startActivity(settingsIntent);
-//
-//                return true;
-//
-//
-//            default:
-//                return false;
-//
-//
-//        }
-//
-//    }
-//
-//    private void logOut() {
-//
-//
-//        mAuth.signOut();
-//        sendToLogin();
-//    }
-//
     private void sendToLogin() {
 
         Intent loginIntent = new Intent(HomeCommunity.this, LoginActivity.class);
@@ -320,51 +232,6 @@ public class HomeCommunity extends AppCompatActivity {
         }
 
     }
-//
-//    private void initializeFragment(){
-//
-//        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//
-//        fragmentTransaction.add(R.id.main_container, homeFragment);
-//        fragmentTransaction.add(R.id.main_container, notificationFragment);
-//        fragmentTransaction.add(R.id.main_container, accountFragment);
-//
-//        fragmentTransaction.hide(notificationFragment);
-//        fragmentTransaction.hide(accountFragment);
-//
-//        fragmentTransaction.commit();
-//
-//    }
-//
-//    private void replaceFragment(Fragment fragment, Fragment currentFragment){
-//
-//        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//        if(fragment == homeFragment){
-//
-//            fragmentTransaction.hide(accountFragment);
-//            fragmentTransaction.hide(notificationFragment);
-//
-//        }
-//
-//        if(fragment == accountFragment){
-//
-//            fragmentTransaction.hide(homeFragment);
-//            fragmentTransaction.hide(notificationFragment);
-//
-//        }
-//
-//        if(fragment == notificationFragment){
-//
-//            fragmentTransaction.hide(homeFragment);
-//            fragmentTransaction.hide(accountFragment);
-//
-//        }
-//        fragmentTransaction.show(fragment);
-//
-//        //fragmentTransaction.replace(R.id.main_container, fragment);
-//        fragmentTransaction.commit();
-//
-//    }
 
 }
 

@@ -1,3 +1,4 @@
+//글쓰기용 액티비티
 package com.example.tipsy;
 
 
@@ -43,7 +44,6 @@ import id.zelory.compressor.Compressor;
 
 public class NewPostActivity extends AppCompatActivity {
 
-//    private Toolbar newPostToolbar;
 
     private ImageView newPostImage;
     private EditText newPostDesc;
@@ -71,21 +71,16 @@ public class NewPostActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         current_user_id = firebaseAuth.getCurrentUser().getUid();
-//
-//        newPostToolbar = findViewById(R.id.new_post_toolbar);
-//        setSupportActionBar(newPostToolbar);
-//        getSupportActionBar().setTitle("Add New Post");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         newPostImage = findViewById(R.id.new_post_image);
         newPostDesc = findViewById(R.id.new_post_desc);
         newPostBtn = findViewById(R.id.post_btn);
         newPostProgress = findViewById(R.id.new_post_progress);
-
+        //글쓰기버튼(+)을 누를때 이벤트 처리
         newPostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //이미지 크롭해서 가져오기
                 CropImage.activity()
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .setMinCropResultSize(512, 512)
@@ -95,6 +90,7 @@ public class NewPostActivity extends AppCompatActivity {
             }
         });
 
+        //글 등록 글관련 정보를 파이어베이스 디비에 저장
         newPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,7 +103,6 @@ public class NewPostActivity extends AppCompatActivity {
 
                     final String randomName = UUID.randomUUID().toString();
 
-                    // PHOTO UPLOAD
                     File newImageFile = new File(postImageUri.getPath());
                     try {
 
@@ -124,8 +119,6 @@ public class NewPostActivity extends AppCompatActivity {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     byte[] imageData = baos.toByteArray();
-
-                    // PHOTO UPLOAD
 
                     UploadTask filePath = storageReference.child("post_images").child(randomName + ".jpg").putBytes(imageData);
                     filePath.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -166,6 +159,7 @@ public class NewPostActivity extends AppCompatActivity {
                                         postMap.put("image_url", downloadUri);
                                         postMap.put("image_thumb", downloadthumbUri);
                                         postMap.put("desc", desc);
+                                        postMap.put("image_name", randomName);
                                         postMap.put("user_id", current_user_id);
                                         postMap.put("timestamp", FieldValue.serverTimestamp());
 
