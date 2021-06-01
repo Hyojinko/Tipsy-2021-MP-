@@ -213,6 +213,7 @@ public class NewPostActivity extends AppCompatActivity {
 
     }
 
+    //액티비티 처리
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
