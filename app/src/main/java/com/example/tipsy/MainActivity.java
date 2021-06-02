@@ -18,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
 
     private community community;
     private ListView listview;
-    ViewFlipper v_fllipper;
+    ViewFlipper viewFlipper;
     @Override
     protected void onCreate(Bundle savedInstanceState) { // onCreate : Do when created.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button roomButton = findViewById(R.id.roombutton);
         Button communityButton = findViewById(R.id.communitybutton);
-        int images[] = {
+        /*int images[] = {
                 R.drawable.event_img1,
                 R.drawable.event_img2,
                 R.drawable.event_img3
@@ -33,8 +33,11 @@ public class MainActivity extends AppCompatActivity {
         v_fllipper = findViewById(R.id.image_slide);
         for(int image:images){
             fllipperImages(image);
-        }
+        }*/
 
+        viewFlipper = (ViewFlipper)findViewById(R.id.viewFlipper);
+        viewFlipper.startFlipping();
+        viewFlipper.setFlipInterval(1000);
         roomButton.setOnClickListener(new View.OnClickListener(){ // sets clicklistener on Room making button.
             @Override
             public void onClick(View view){
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
-    public void fllipperImages(int image){
+   /* public void fllipperImages(int image){
         ImageView imageView = new ImageView(this);
         imageView.setBackgroundResource(image);
         v_fllipper.setFlipInterval(4000);
@@ -73,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         //animation
         v_fllipper.setInAnimation(this,android.R.anim.slide_in_left);
         v_fllipper.setOutAnimation(this, android.R.anim.slide_out_right);
-    }
+    }*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);

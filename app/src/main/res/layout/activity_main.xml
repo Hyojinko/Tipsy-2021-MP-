@@ -19,27 +19,35 @@
             android:layout_weight="4"
             android:orientation="horizontal">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
                     <!--<ImageButton
                         android:id="@+id/eventbutton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/eventbutton" />-->
                     <ViewFlipper
-                        android:id="@+id/image_slide"
+                        android:id="@+id/viewFlipper"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"/>
-                </LinearLayout>
-            </ScrollView>
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/imageView1"
+                            android:layout_margin="40dp"
+                            android:src="@drawable/event_img1"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/imageView2"
+                            android:layout_margin="40dp"
+                            android:src="@drawable/event_img2"/>
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/imageView3"
+                            android:layout_margin="40dp"
+                            android:src="@drawable/event_img3"/>
 
+                    </ViewFlipper>
         </LinearLayout>
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
