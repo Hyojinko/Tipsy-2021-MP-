@@ -25,44 +25,38 @@
         <uses-library
             android:name="com.google.android.maps"
             android:required="true" />
+
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".NewPostActivity"
             android:parentActivityName=".HomeCommunity" />
-        <activity android:name=".CommentsActivity"
-            android:parentActivityName=".HomeCommunity"/>
-
-        <activity android:name=".event_1" />
-        <activity android:name=".tempmap" />
-        <activity android:name=".MainActivity">
-        </activity>
-        <activity android:name=".FindActivity"/>
+        <activity
+            android:name=".CommentsActivity"
+            android:parentActivityName=".HomeCommunity" />
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".FindActivity" />
         <activity android:name=".LoginActivity">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileActivity"/>
-        <activity android:name=".SetupActivity"/>
-        <activity android:name=".HomeCommunity"/>
-        <activity android:name=".Signinactivity">
-
-        </activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".SetupActivity" />
+        <activity android:name=".HomeCommunity" />
+        <activity android:name=".Signinactivity"></activity>
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="3lkixv3giy" />
 
-        <activity android:name=".MapApi" />
+        <activity android:name=".MapActivity" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".StartActivity" />
-        <activity android:name=".AChatActivity"/>
+        <activity android:name=".AChatActivity" />
     </application>
 
 </manifest>

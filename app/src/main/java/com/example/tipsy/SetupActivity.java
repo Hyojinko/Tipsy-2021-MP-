@@ -58,7 +58,6 @@ public class SetupActivity extends AppCompatActivity {
     private EditText setupName;
     private Button setupBtn;
     private ProgressBar setupProgress;
-
     private StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
@@ -82,6 +81,7 @@ public class SetupActivity extends AppCompatActivity {
         setupName = findViewById(R.id.setup_name);
         setupBtn = findViewById(R.id.setup_btn);
         setupProgress = findViewById(R.id.setup_progress);
+
 
         setupProgress.setVisibility(View.VISIBLE);
         setupBtn.setEnabled(false);
