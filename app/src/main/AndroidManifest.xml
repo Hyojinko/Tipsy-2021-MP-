@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.tipsy">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/homebtn"
+        android:label="Tipsy"
+        android:logo="@drawable/rbtn"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Tipsy">
+
+        <uses-library
+            android:name="com.google.android.maps"
+            android:required="true" />
+
+        <activity
+            android:name=".friendset"
+            android:label="@string/title_activity_friendset"
+            android:theme="@style/Theme.Tipsy.NoActionBar" />
+        <activity android:name=".event_1" />
+        <activity android:name=".Login" />
+        <activity android:name=".tempmap" />
+        <activity
+            android:name=".account"
+            android:label="@string/title_activity_account"
+            android:theme="@style/Theme.Tipsy.NoActionBar" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="3lkixv3giy" />
+
+        <activity android:name=".MapApi" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".StartActivity" />
+        <activity android:name=".AChatActivity"/>
+    </application>
+
+</manifest>

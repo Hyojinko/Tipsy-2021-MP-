@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml:1:1-46
+INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml:1:1-46
+INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml:1:1-46
+	package
+		ADDED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml:1:11-43
+		INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+		INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml:1:1-46
+uses-sdk
+INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+		ADDED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+		INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+		ADDED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
+		INJECTED from D:\portfolio\2-1\Mobile programming\Tipsy-2021-MP-\tedclustering\src\main\AndroidManifest.xml
