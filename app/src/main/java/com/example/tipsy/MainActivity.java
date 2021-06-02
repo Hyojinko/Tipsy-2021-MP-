@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -23,8 +24,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) { // onCreate : Do when created.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button roomButton = findViewById(R.id.roombutton);
-        Button communityButton = findViewById(R.id.communitybutton);
+
+        ImageButton roomButton = findViewById(R.id.enterannonymous);
+        ImageButton communityButton = findViewById(R.id.entercommunity);
+        ImageButton guestButton = findViewById(R.id.enterguestbook);
+        ImageButton recordButton = findViewById(R.id.recorddrink);
 
         viewFlipper = (ViewFlipper)findViewById(R.id.viewFlipper);
         viewFlipper.startFlipping();
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        communityButton.setOnClickListener(new View.OnClickListener(){ // sets clicklistener on annomyous chatting button.
+        guestButton.setOnClickListener(new View.OnClickListener(){ // sets clicklistener on annomyous chatting button.
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MainActivity.this, AChatActivity.class);
@@ -46,15 +50,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //community button
-        Button btn3=findViewById(R.id.community);
-        btn3.setOnClickListener(new View.OnClickListener(){
+        communityButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(getApplicationContext(), HomeCommunity.class);
                 startActivity(intent);
             }
         });
-
+recordButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(getApplicationContext(), DrinkRecordActivity.class);
+        startActivity(intent);
+    }
+});
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }

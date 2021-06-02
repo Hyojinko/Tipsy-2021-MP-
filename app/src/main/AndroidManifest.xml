@@ -25,7 +25,9 @@
         <uses-library
             android:name="com.google.android.maps"
             android:required="true" />
-
+        <activity android:name=".AvgActivity"/>
+        <activity android:name="DrinkRecordActivity">
+        </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
