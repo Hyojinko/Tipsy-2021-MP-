@@ -36,7 +36,7 @@
                     <ViewFlipper
                         android:id="@+id/image_slide"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"/>
+                        android:layout_height="match_parent"/>
                 </LinearLayout>
             </ScrollView>
 
@@ -58,10 +58,26 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="horizontal">
+                    <Button
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/roombutton"
+                        android:singleLine="true"
+                        android:text="채팅방 입장"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/community"
                         android:layout_width="match_parent"
+                        android:singleLine="true"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="커뮤니티" />
@@ -73,24 +89,11 @@
                     android:layout_weight="1"
                     android:orientation="horizontal">
                     <Button
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/roombutton"
-                        android:text="익명 채팅방 입장"/>
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:singleLine="true"
                         android:id="@+id/communitybutton"
-                        android:text="익명 한줄 게시판 입장"/>
+                        android:text="익명채팅방입장"/>
 
 
                 </LinearLayout>
