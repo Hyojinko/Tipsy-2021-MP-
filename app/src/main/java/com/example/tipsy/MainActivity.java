@@ -8,21 +8,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private community community;
     private ListView listview;
-
+    ViewFlipper v_fllipper;
     @Override
     protected void onCreate(Bundle savedInstanceState) { // onCreate : Do when created.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button roomButton = findViewById(R.id.roombutton);
         Button communityButton = findViewById(R.id.communitybutton);
+        int images[] = {
+                R.drawable.event_img1,
+                R.drawable.event_img2,
+                R.drawable.event_img3
+        };
+        v_fllipper = findViewById(R.id.image_slide);
+        for(int image:images){
+            fllipperImages(image);
+        }
 
         roomButton.setOnClickListener(new View.OnClickListener(){ // sets clicklistener on Room making button.
             @Override
@@ -52,6 +63,16 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+    public void fllipperImages(int image){
+        ImageView imageView = new ImageView(this);
+        imageView.setBackgroundResource(image);
+        v_fllipper.setFlipInterval(4000);
+        v_fllipper.setAutoStart(true);
+
+        //animation
+        v_fllipper.setInAnimation(this,android.R.anim.slide_in_left);
+        v_fllipper.setOutAnimation(this, android.R.anim.slide_out_right);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
