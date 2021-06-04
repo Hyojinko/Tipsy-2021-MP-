@@ -6,10 +6,6 @@
         android:title="주변 지도"
         app:showAsAction="withText"/>
 
-    <item android:id="@+id/friends"
-        android:title="친구 목록 / 친구와의 1:1 채팅"
-        app:showAsAction="withText"/>
-
     <item android:id="@+id/Logout"
         android:title="로그아웃"
         app:showAsAction="withText"/>

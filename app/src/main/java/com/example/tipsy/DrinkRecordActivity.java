@@ -103,6 +103,18 @@ public class DrinkRecordActivity extends AppCompatActivity {
                     PrintWriter out = new PrintWriter(fos, false);
                     PrintWriter out2 = new PrintWriter(fos2, false);
 
+                    if(beer.getText().length()==0 || String.valueOf(beer.getText()
+                    {
+                        beer.setText("0");
+                    }
+                    if(soju.getText().length()==0)
+                    {
+                        soju.setText("0");
+                    }
+                    if(wine.getText().length()==0)
+                    {
+                        wine.setText("0");
+                    }
                     out.println(beer.getText());
                     out.println(soju.getText());
                     out.println(wine.getText());
@@ -160,6 +172,8 @@ public class DrinkRecordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 파일의 내용을 읽어서 TextView 에 보여주기
+
+                Log.v("Files","Hola"+"");
 
                 try {
                     FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
