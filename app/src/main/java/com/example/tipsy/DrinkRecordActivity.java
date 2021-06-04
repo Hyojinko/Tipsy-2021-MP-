@@ -103,7 +103,7 @@ public class DrinkRecordActivity extends AppCompatActivity {
                     PrintWriter out = new PrintWriter(fos, false);
                     PrintWriter out2 = new PrintWriter(fos2, false);
 
-                    if(beer.getText().length()==0 || String.valueOf(beer.getText()
+                    if(beer.getText().length()==0 )
                     {
                         beer.setText("0");
                     }
