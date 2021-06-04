@@ -32,13 +32,17 @@ public class AvgActivity extends AppCompatActivity {
     int wineCnt;
     TextView targetMonth, tvdaySum, beerAvg, sojuAvg, wineAvg;
     int daySum;
+    ArrayList<CalendarDay> dates;
+    CalendarDay myDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drinkday);
 
-        //calendarview
+        //material calendarview
+        dates = new ArrayList<>();
+
         MaterialCalendarView calendarView = findViewById(R.id.calendarView);
         calendarView.setSelectedDate(CalendarDay.today());
 
@@ -46,10 +50,8 @@ public class AvgActivity extends AppCompatActivity {
         calendarView.addDecorators(oneDayDecorator);
 
         calendarView.setSelectedDate(CalendarDay.today());
-        calendarView.addDecorator(new EventDecorator(Color.RED, Collections.singleton(CalendarDay.today())));
         calendarView.addDecorators(new SaturdayDecorator());
         calendarView.addDecorators(new SundayDecorator());
-
 
         targetMonth = (TextView)findViewById(R.id.targetMonth);
         tvdaySum = (TextView) findViewById(R.id.daySum);
@@ -69,11 +71,17 @@ public class AvgActivity extends AppCompatActivity {
             FileInputStream fis = openFileInput(dayfileName);
             BufferedReader buffer = new BufferedReader(new InputStreamReader(fis));
             String str = buffer.readLine();
+            int strInt;
+            int monthInt = Integer.parseInt(month) - 1;
             daySum++;
 
             while (str != null) {
-                str = buffer.readLine();
+                strInt = Integer.parseInt(str);
+                myDate = CalendarDay.from(2021, monthInt, strInt);
+                dates.add(myDate);
                 daySum++;
+                str = buffer.readLine();
+                Log.i("test","check!!!!!");
             }
             buffer.close();
         } catch (FileNotFoundException e) {
@@ -81,6 +89,9 @@ public class AvgActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        calendarView.addDecorator(new EventDecorator(Color.RED, dates));
+        Log.i("test","check!!!!!");
 
         beerCnt = 0;
         sojuCnt = 0;

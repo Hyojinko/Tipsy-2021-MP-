@@ -103,6 +103,7 @@ public class DrinkRecordActivity extends AppCompatActivity {
                     PrintWriter out = new PrintWriter(fos, false);
                     PrintWriter out2 = new PrintWriter(fos2, false);
 
+                    // case if user don't insert no any value
                     if(beer.getText().length()==0 )
                     {
                         beer.setText("0");
